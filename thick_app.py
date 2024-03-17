@@ -13,7 +13,7 @@ def piping_calculator(diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F):
     t = math.ceil(t * 10) / 10
 
     t_retired = (pressure_MPa * diameter_mm) / (2 * S * E * W + 2 * pressure_MPa * Y) * F + C_retired
-    t_retired = max(t_retired, 2.5)  # Ensure minimum thickness is 2.5 mm
+    t_retired = max(t_retired, 2.8)  # Ensure minimum thickness is 2.5 mm
     t_retired = math.ceil(t_retired * 10) / 10
 
     return t, t_retired
@@ -29,9 +29,9 @@ def calculate_tank_thickness(diameter, height, yield_strength, tensile_strength,
     top_thickness_m = minimum_plate_thickness_m
 
     # Ensure minimum thickness is 2.5 mm
-    bottom_thickness_m = max(bottom_thickness_m, 0.0025)
-    shell_body_thickness_m = max(shell_body_thickness_m, 0.0025)
-    top_thickness_m = max(top_thickness_m, 0.0025)
+    bottom_thickness_m = max(bottom_thickness_m, 0.0028)
+    shell_body_thickness_m = max(shell_body_thickness_m, 0.0028)
+    top_thickness_m = max(top_thickness_m, 0.0028)
 
     bottom_thickness_mm = bottom_thickness_m * 1000
     shell_body_thickness_mm = shell_body_thickness_m * 1000

@@ -1,2 +1,12 @@
+
+pandas
+datetime
+requests
+numpy
+matplotlib
+tensorflow
 streamlit
-math
+ccxt
+plotly
+yfinance
+

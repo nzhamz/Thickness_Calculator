@@ -1,12 +1,4 @@
-
-pandas
-datetime
-requests
-numpy
-matplotlib
-tensorflow
 streamlit
-ccxt
-plotly
-yfinance
+math
+
 

@@ -10,8 +10,8 @@ import streamlit as st
 import requests
 
 # Create a text input widget for the image URL
-filenamei1= 'NuraMark2'
-model_url0 = 'https://huggingface.co/datasets/Nzham/CRY/resolve/main/NuraMark2.png?download=true'
+filenamei1= 'CMC'
+model_url0 = 'https://huggingface.co/datasets/Nzham/V4.5/resolve/main/CMC.png?download=true'
 
 def open_link(url):
   """Opens a link in a new tab using JavaScript."""

@@ -24,6 +24,10 @@ def open_link(url):
 st.title("Static Equipment Calculator Suite (SECU) ")
 st.header("Web-based Corrosion Management Calculator")
 
+st.button("Tank Retired Thickness Calculator")
+st.button("Pipe Retired Thickness Calculator")
+st.button("Calculating Cathodic Protection Total Anodes")
+
 # Use function calls for button clicks
 if st.button("Tank Retired Thickness Calculator"):
     #open_link('https://nzham-kuk.onrender.com/')

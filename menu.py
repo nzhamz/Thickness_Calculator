@@ -11,31 +11,49 @@ import math
 import requests
 
 
-def open_link(url):
-  """Opens a link in a new tab using JavaScript."""
-  st.write(f'<a href="{url}" target="_blank">Click here for {url.split("/")[-1]}</a>', unsafe_allow_html=True)
-    
-#model_url0 = 'https://huggingface.co/datasets/Nzham/CRY/resolve/main/NuraMark2.png?download=true'
+import streamlit as st
 
-#response = requests.get(model_url0)
-# Display the image from the response
-#st.image(response.content, caption="NeuraMark", use_column_width=True)
+
+def open_link(url):
+    """Opens a link in a new tab using JavaScript."""
+    st.write(f'<a href="{url}" target="_blank">Click here for {url.split("/")[-1]}</a>', unsafe_allow_html=True)
+
+
+def tank_retired_thickness_calculator():
+    # Add your content for calculating tank retired thickness here
+    st.subheader("Tank Retired Thickness Calculator")
+    # Add functionalities like input fields, calculations, and result display
+    pass
+
+
+def pipe_retired_thickness_calculator():
+    # Add your content for calculating pipe retired thickness here
+    st.subheader("Pipe Retired Thickness Calculator")
+    # Add functionalities like input fields, calculations, and result display
+    pass
+
+
+def cathodic_protection_calculator():
+    # Add your content for calculating cathodic protection total anodes here
+    st.subheader("Calculating Cathodic Protection Total Anodes")
+    # Add functionalities like input fields, calculations, and result display
+    pass
+
 
 st.title("Static Equipment Calculator Suite (SECU) ")
 st.header("Web-based Corrosion Management Calculator")
 
-st.button("Tank Retired Thickness Calculator")
-st.button("Pipe Retired Thickness Calculator")
-st.button("Calculating Cathodic Protection Total Anodes")
 
 # Use function calls for button clicks
 if st.button("Tank Retired Thickness Calculator"):
-    #open_link('https://nzham-kuk.onrender.com/')
-    st.write('Under Devlopment')
+    tank_retired_thickness_calculator()
 
 elif st.button("Pipe Retired Thickness Calculator"):
-    open_link('https://thicknesscalculator-cifmkkwkbnuzztnoxsaruv.streamlit.app/')
+    pipe_retired_thickness_calculator()
 
 elif st.button("Calculating Cathodic Protection Total Anodes"):
-    #open_link('https://thicknesscalculator-cifmkkwkbnuzztnoxsaruv.streamlit.app/')
-    st.write('Under Devlopment')
+    cathodic_protection_calculator()
+
+else:
+    st.write("Please select a calculation tool.")
+

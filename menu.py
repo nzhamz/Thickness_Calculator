@@ -55,7 +55,7 @@ if st.button('Cathodic Protection Total Anodes Calculator'):
 
 st.write('')
 
-imo= ':➕➖✖️➗:'* 3
+imo= '➕➖✖️➗'* 3
 
 st.title(imo)
 

@@ -8,23 +8,27 @@ Created on Tue Apr 23 20:55:17 2024
 
 import streamlit as st
 import math
+import requests
 
 
 
-def navigate_to_tank_calculator():
-    st.experimental_rerun()  # Force Streamlit to rerun and clear state
-    exec(open("tank.py").read())  # Execute the tank_calculator.py file
+#model_url0 = 'https://huggingface.co/datasets/Nzham/CRY/resolve/main/NuraMark2.png?download=true'
 
-def navigate_to_pipe_calculator():
-    st.experimental_rerun()  # Force Streamlit to rerun and clear state
-    exec(open("pipe.py").read())  # Execute the pipe_calculator.py file
+#response = requests.get(model_url0)
+# Display the image from the response
+#st.image(response.content, caption="NeuraMark", use_column_width=True)
 
-st.title("Static CalX")
-st.header("Web-based Tank & Pipe Retirement Calculator")
+st.title("Static Equipment Calculator Suite (SECU) ")
+st.header("Web-based Corrosion Management Calculator")
 
 # Use function calls for button clicks
 if st.button("Tank Retired Thickness Calculator"):
-    navigate_to_tank_calculator()
+    #open_link('https://nzham-kuk.onrender.com/')
+    st.write('Under Devlopment')
 
 elif st.button("Pipe Retired Thickness Calculator"):
-    navigate_to_pipe_calculator()
+    open_link('https://thicknesscalculator-cifmkkwkbnuzztnoxsaruv.streamlit.app/')
+
+elif st.button("Calculating Cathodic Protection Total Anodes"):
+    #open_link('https://thicknesscalculator-cifmkkwkbnuzztnoxsaruv.streamlit.app/')
+    st.write('Under Devlopment')

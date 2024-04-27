@@ -11,7 +11,10 @@ import math
 import requests
 
 
-
+def open_link(url):
+  """Opens a link in a new tab using JavaScript."""
+  st.write(f'<a href="{url}" target="_blank">Click here for {url.split("/")[-1]}</a>', unsafe_allow_html=True)
+    
 #model_url0 = 'https://huggingface.co/datasets/Nzham/CRY/resolve/main/NuraMark2.png?download=true'
 
 #response = requests.get(model_url0)

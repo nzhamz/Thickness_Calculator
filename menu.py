@@ -23,35 +23,40 @@ if model_url0:
     response = requests.get(model_url0)
     # Display the image from the response
     st.image(response.content, caption="CMC", use_column_width=True)
-    
+ #########################################################
+   
     
 # Title for the Streamlit app
 st.title('Welcome to Corrosion Management Calculator (CMC) : ')
 
 st.write('')
-#F
+#########################################################
 
-# Button for CYP
 if st.button('Pipe Retirement Thickness Calculator'):
     # Open the link in a new tab
     open_link('https://thicknesscalculator-cifmkkwkbnuzztnoxsaruv.streamlit.app/')
 
 st.write('')
+#########################################################
 
 
-# Button for TASI
 if st.button('Tank Retirement Thickness Calculator'):
     # Open the link in a new tab
     st.write('Comming SOOOOOON!!!')
     #open_link('https://tasi-nuramark.onrender.com/')
 
 st.write('')
+#########################################################
 
 
-# Button for TASI
 if st.button('Cathodic Protection Total Anodes Calculator'):
     st.write('Comming SOOOOOON!!!')
+  
+st.write('')
 
+#########################################################
+if st.button('Coating Volume Calculator'):
+    st.write('Comming SOOOOOON!!!')
 
 st.write('')
 

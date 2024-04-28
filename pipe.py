@@ -53,9 +53,12 @@ def piping_input():
 
   return diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F
 
-st.title("Corrosion Management Retired Thickness Calculator")
+imo= '➕➖✖️➗'* 3
+st.title(imo)
 
-st.header("Piping Calculator")
+st.title("Corrosion Inspector e-Tool (CIeT) :")
+
+st.header("Pipe Retirement Thickness Calculator'")
 
 # Get input values with default values pre-filled
 diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F = piping_input()
@@ -64,3 +67,5 @@ diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F = piping_input()
 if st.button("Calculate"):
   t, t_retired = piping_calculator(diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F)
   st.write("## Retired Thickness:", t_retired, "mm")
+  
+st.title(imo)

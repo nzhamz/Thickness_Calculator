@@ -39,7 +39,7 @@ st.title(imo)
 
 st.title("Corrosion Inspector e-Tool (CIeT) :")
 
-st.header("Tank Retirement Thickness Calculator'")
+st.header("Tank Retirement Thickness Calculator ")
 
 # Input fields for Tank Calculator
 diameter_ft = st.number_input("Tank Diameter (in feet)", value=40.0, step=1.0)

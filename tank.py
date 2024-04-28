@@ -9,58 +9,65 @@ Created on Tue Apr 23 20:55:17 2024
 import streamlit as st
 import math
 
-def piping_calculator(diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F):
-  mm_per_inch = 25.4
-  MPa_per_psi = 0.0689476
+def calculate_tank_thickness(diameter, height, yield_strength, tensile_strength, joint_efficiency, minimum_plate_thickness_m, density_water, gravity):
+  diameter_m = diameter / 100
+  height_m = height / 100
 
-  diameter_mm = diameter_inch * mm_per_inch
-  pressure_MPa = pressure_psi * MPa_per_psi
+  head_pressure = density_water * height_m * gravity / 1000
 
-  t = (pressure_MPa * diameter_mm) / (2 * S * E * W + 2 * pressure_MPa * Y) + C
-  t = max(t, 2.5)  # Ensure minimum thickness is 2.5 mm
-  t = math.ceil(t * 10) / 10
+  bottom_thickness_m = (2 * head_pressure * diameter_m) / (3 * yield_strength * joint_efficiency)
+  shell_body_thickness_m = (head_pressure * diameter_m) / (yield_strength * joint_efficiency)
+  top_thickness_m = minimum_plate_thickness_m
 
-  t_retired = (pressure_MPa * diameter_mm) / (2 * S * E * W + 2 * pressure_psi * Y) * F + C_retired
-  t_retired = max(t_retired, 2.8)  # Ensure minimum thickness is 2.5 mm
-  t_retired = math.ceil(t_retired * 10) / 10
+  # Ensure minimum thickness is 2.5 mm
+  bottom_thickness_m = max(bottom_thickness_m, 0.0028)
+  shell_body_thickness_m = max(shell_body_thickness_m, 0.0028)
+  top_thickness_m = max(top_thickness_m, 0.0028)
 
-  return t, t_retired
+  bottom_thickness_mm = bottom_thickness_m * 1000
+  shell_body_thickness_mm = shell_body_thickness_m * 1000
+  top_thickness_mm = top_thickness_m * 1000
 
-def piping_input():
-  # Define default values
-  default_diameter_inch = 6.0
-  default_pressure_psi = 100.0
-  default_S = 138.0
-  default_E = 1.0
-  default_W = 1.0
-  default_Y = 0.4
-  default_C = 3.0
-  default_C_retired = 0.0
-  default_F = 0.8
+  # Removed commented section for retired thickness per course
 
-  # Use temporary variables to store input values
-  diameter_inch = st.number_input("Pipe Diameter (in inches)", value=default_diameter_inch, step=1.5)
-  pressure_psi = st.number_input("Pressure (in psi)", value=default_pressure_psi, step=1.0)
-  st.write('')
-  st.write('Advanced Features')
-  S = st.number_input("Allowable Stress (MPa)", value=default_S, step=10.0)
-  E = st.number_input("Longitudinal Weld Joint Efficiency", value=default_E, step=0.1)
-  W = st.number_input("Weld Strength Reduction Factor", value=default_W, step=0.1)
-  Y = st.number_input("Coefficient for Temperature and Material", value=default_Y, step=0.1)
-  C = st.number_input("Corrosion Allowance (mm)", value=default_C, step=1.0)
-  C_retired = st.number_input("Corrosion Allowance for Retired Thickness (mm)", value=default_C_retired, step=0.1)
-  F = st.number_input("Safety Factor for Retired Thickness", value=default_F, step=0.1)
+  return bottom_thickness_mm, shell_body_thickness_mm, top_thickness_mm
 
-  return diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F
 
-st.title("Corrosion Management Retired Thickness Calculator")
 
-st.header("Piping Calculator")
+imo= '➕➖✖️➗'* 3
+st.title(imo)
 
+st.title("Corrosion Inspector e-Tool (CIeT) :")
+
+st.header("Tank Retirement Thickness Calculator'")
+
+# Input fields for Tank Calculator
+diameter_ft = st.number_input("Tank Diameter (in feet)", value=40.0, step=1.0)
+height_ft = st.number_input("Tank Height (in feet)", value=50.0, step=1.0)
+
+# Advanced Settings
+st.subheader("Tank dvanced Settings")
+yield_strength = st.number_input("Yield Strength (MPa)", value=300.0, step=10.0)
+tensile_strength = st.number_input("Tensile Strength (MPa)", value=540.0, step=10.0)
+joint_efficiency = st.number_input("Joint Efficiency", value=0.9, step=0.1)
+minimum_plate_thickness_m = st.number_input("Minimum Plate Thickness (m)", value=0.0032, step=0.0001)
+density_water = st.number_input("Density of Water (kg/m³)", value=1000, step=10)
+gravity = st.number_input("Gravity (m/s²)", value=9)
+
+# Calculate and display retired thicknesses
+#bottom_thickness_mm, shell_body_thickness_mm, top_thickness_mm, retired_thicknesses_mm = calculate_tank_thickness(diameter_ft, height_ft, yield_strength, tensile_strength, joint_efficiency, minimum_plate_thickness_m, density_water, gravity)
+#st.write("Retired Shell Thickness:", retired_thicknesses_mm, "mm")
+#st.write("Retired Bottom Plate Thickness:", bottom_thickness_mm, "mm")
+#st.write("Retired Roof Plate Thickness:", top_thickness_mm, "mm")
 # Get input values with default values pre-filled
-diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F = piping_input()
 
 # Perform calculation only when the button is clicked
 if st.button("Calculate"):
-  t, t_retired = piping_calculator(diameter_inch, pressure_psi, S, E, W, Y, C, C_retired, F)
-  st.write("## Retired Thickness:", t_retired, "mm")
+  bottom_thickness_mm, shell_body_thickness_mm, top_thickness_mm= calculate_tank_thickness(diameter_ft, height_ft, yield_strength, tensile_strength, joint_efficiency, minimum_plate_thickness_m, density_water, gravity)
+
+  st.write("## Retired Bottom Plate Thickness:", round(bottom_thickness_mm,2), "mm")
+  st.write("## Retired Shell Plate Thickness:", round(shell_body_thickness_mm,2), "mm")
+  st.write("## Retired Roof Plate Thickness:", round(top_thickness_mm,2), "mm")
+  
+  
+st.title(imo)

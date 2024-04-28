@@ -58,16 +58,16 @@ st.write('')
 
 if st.button('Tank Retirement Thickness Calculator'):
     # Open the link in a new tab
-    st.write('Comming SOOOOOON!!!')
-    #open_link('https://tasi-nuramark.onrender.com/')
+    #st.write('Comming SOOOOOON!!!')
+    open_link('https://thicknesscalculator-tank.streamlit.app/')
 
 st.write('')
 #########################################################
 
 if st.button('Corrosion Rate & Remaining Life Calculator'):
     # Open the link in a new tab
-    st.write('Comming SOOOOOON!!!')
-    #open_link('https://tasi-nuramark.onrender.com/')
+    #st.write('Comming SOOOOOON!!!')
+    open_link('https://thicknesscalculator-cml.streamlit.app/')
 
 st.write('')
 #########################################################

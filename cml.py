@@ -16,7 +16,7 @@ st.title(decorative_emojis)
 
 st.title("Corrosion Inspector e-Tool (CIeT) :")
 
-st.header("Tank Retirement Thickness Calculator")
+st.header("Corrosion Rate & Remaining Life Calculator")
 
 # Input fields for Tank Calculator (consistent float data type)
 original_thickness_mm = st.number_input("Thickness 1, in mm: ", value=10.0, step=0.5)

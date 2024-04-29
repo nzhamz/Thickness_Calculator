@@ -28,13 +28,13 @@ st.subheader("Corrosion Rate")
 
 # Calculate corrosion rate (ensure consistent data types)
 corrosion_rate_mm_per_year = (original_thickness_mm - current_thickness_mm) / float(exposure_time_years)
-st.write("Corrosion Rate:", corrosion_rate_mm_per_year, "mm/y")
+st.write("Corrosion Rate:", round(corrosion_rate_mm_per_year,2), "mm/y")
 
 # Advanced Settings
 st.subheader("Remaining Life")
 if current_thickness_mm > minimum_thickness_mm:
     remaining_life_years = (current_thickness_mm - minimum_thickness_mm) / corrosion_rate_mm_per_year
-    st.write("Remaining Life:", remaining_life_years, "years")
+    st.write("Remaining Life:", round(remaining_life_years,1), "years")
 else:
     st.write("Warning: Current thickness is below retired thickness. Replace or shutdown immediately!")
 
